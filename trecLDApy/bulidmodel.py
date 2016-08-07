@@ -3,10 +3,10 @@ import lda
 from sklearn.feature_extraction.text import CountVectorizer
 import numpy as np
 class  iniModel:
-    def bulidModel(self,filename):
+    def bulidModel(self,filename,topicwordnum):
         corpus = []
         vocab = []
-        for line in open("text.txt", 'r').readlines():
+        for line in open(filename, 'r').readlines():
             print line
             corpus.append(line.strip())
             vocab +=line.split(" ")
@@ -23,7 +23,7 @@ class  iniModel:
         model = lda.LDA(n_topics=5, n_iter=500, random_state=1)
         model.fit(np.asarray(weight))
         topic_word = model.topic_word_
-        n_top_words = 1
+        n_top_words = topicwordnum
 
         for i, topic_dist in enumerate(topic_word):
             topic_words = np.array(vocab)[np.argsort(topic_dist)][:-(n_top_words+1):-1]
@@ -40,5 +40,5 @@ class  iniModel:
 
 
 p = iniModel()
-p.bulidModel("text.txt")
+p.bulidModel("text.txt",8)
 
