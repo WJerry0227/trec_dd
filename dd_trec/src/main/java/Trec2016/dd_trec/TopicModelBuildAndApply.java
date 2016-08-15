@@ -49,8 +49,8 @@ public class TopicModelBuildAndApply {
 	 * set the number of key you want
 	 * @param number
 	 */
-	public static void getKeyword(int number) {
-		File f = new File("models/model-final.twords");
+	public static void getKeyword(int number,String directory) {
+		File f = new File(directory+"/model-final.twords");
 		String result = new String();
 		try{
 			BufferedReader br = new BufferedReader(new FileReader(f));
@@ -111,8 +111,13 @@ public class TopicModelBuildAndApply {
 	 */
 	public static String classify(String directory, String fileName,int classNumber,int keyNumber){
 		newModule(directory, fileName,classNumber);
-		getKeyword(keyNumber);
+		getKeyword(keyNumber,directory);
 		return OUTPUT;
+	}
+	
+	public static void main(String[] args) {
+		classify("models","text.txt",5,5);
+
 	}
 
 }
