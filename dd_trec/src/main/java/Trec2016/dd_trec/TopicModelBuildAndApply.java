@@ -8,7 +8,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-
 import jgibblda.Estimator;
 import jgibblda.Inferencer;
 import jgibblda.LDACmdOption;
@@ -39,8 +38,7 @@ public class TopicModelBuildAndApply {
 	    ldaOption.alpha = alpha;  
 	    ldaOption.beta = beta;  
 	    ldaOption.K =  classNumber;  
-	    ldaOption.niters = niters;  
-	 //   topicNum = ldaOption.K;  
+	    ldaOption.niters = niters;   
 	    Estimator estimator = new Estimator();  
 	    estimator.init(ldaOption);  
 	    estimator.estimate(); 
@@ -60,12 +58,12 @@ public class TopicModelBuildAndApply {
 		    boolean isResult = false;
 		    int count = -1;
 			while((line = br.readLine())!= null){
-				System.out.println("read line ok");
+				//System.out.println("read line ok");
 				String[] word = line.split(" ");
 				if(word[0].equals("Topic")) {//A new topic
 					count = 0;
 					isResult = true;
-					System.out.println("find topic");
+					//System.out.println("find topic");
 					continue;
 				}
 				if(isResult && count < number) {
@@ -77,7 +75,7 @@ public class TopicModelBuildAndApply {
 						result += keyword[0].trim() +"\n";
 						isResult = false;
 					}
-					System.out.println(keyword[0].trim());						
+					//System.out.println(keyword[0].trim());						
 				}			
 			}		
 		}catch(IOException ex){
