@@ -62,7 +62,7 @@ public class TopicModelBuildAndApply {
 			while((line = br.readLine())!= null){
 				System.out.println("read line ok");
 				String[] word = line.split(" ");
-				if(word[0].equals("Topic")) {//遇到Topic标志，开始新的Topic的关键字提取，count设为0
+				if(word[0].equals("Topic")) {//A new topic
 					count = 0;
 					isResult = true;
 					System.out.println("find topic");
