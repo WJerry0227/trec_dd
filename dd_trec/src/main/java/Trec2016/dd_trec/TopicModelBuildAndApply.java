@@ -3,11 +3,9 @@ package Trec2016.dd_trec;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
 import jgibblda.Estimator;
@@ -23,6 +21,7 @@ public class TopicModelBuildAndApply {
 	private static double beta = 0.1;
 	private static int niters = 1000;
 	private static String OUTPUT = "LDAResult.txt";
+	private static BufferedReader br;
 	
 	/**
 	 * Build the Topic model called "model-final" by the data
@@ -124,9 +123,9 @@ public class TopicModelBuildAndApply {
 	private static void filter(String directory,String filename) {
 		File f = new File(directory+"/"+filename);
 		Filter filter = new Filter();
-		ArrayList wordList = new ArrayList<String>();
+		ArrayList<String> wordList = new ArrayList<String>();
 		try {
-			BufferedReader br = new BufferedReader(new FileReader(f));
+			br = new BufferedReader(new FileReader(f));
 			String line;
 			int linecount = 0;
 			while((line = br.readLine()) != null) {
