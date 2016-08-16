@@ -8,6 +8,8 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+
 import jgibblda.Estimator;
 import jgibblda.Inferencer;
 import jgibblda.LDACmdOption;
@@ -110,6 +112,7 @@ public class TopicModelBuildAndApply {
 	 * The "models/text.txt" is a correct example.
 	 */
 	public static String classify(String directory, String fileName,int classNumber,int keyNumber){
+		filter(directory, fileName);
 		newModule(directory, fileName,classNumber);
 		getKeyword(keyNumber,directory);
 		return OUTPUT;
@@ -117,7 +120,44 @@ public class TopicModelBuildAndApply {
 	
 	public static void main(String[] args) {
 		classify("models","text.txt",5,5);
-
+	}
+	private static void filter(String directory,String filename) {
+		File f = new File(directory+"/"+filename);
+		Filter filter = new Filter();
+		ArrayList wordList = new ArrayList<String>();
+		try {
+			BufferedReader br = new BufferedReader(new FileReader(f));
+			String line;
+			int linecount = 0;
+			while((line = br.readLine()) != null) {
+				//wordList.clear();
+				if(linecount != 0){				
+				String[] word = line.split(" ");
+				for(int i = 0;i<word.length;i++) {
+					if(filter.filter(word[i]))	
+						wordList.add(word[i]+" ");
+					if(i==word.length -1)
+						wordList.add("\n");
+				} 
+			 }else {
+				 wordList.add(line);
+				 wordList.add("\n");
+				 linecount+=1;
+				 continue;
+			 }
+			}
+			String str = new String();
+			for(int j = 0;j<wordList.size();j++){
+				str+=wordList.get(j);		
+			}
+			BufferedWriter writer = new BufferedWriter(new FileWriter(
+					directory+"/"+filename));
+			writer.write(str);
+			writer.close();
+	
+		}catch (IOException ex) {
+			ex.printStackTrace();
+		}
 	}
 
 }
