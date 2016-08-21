@@ -17,7 +17,7 @@ public class ContentCatcher {
 
 	private static final String ENCODING = "utf-8";
 
-	private static final String OUTFILE = "result.txt";
+	private static final String OUTFILE = "models/result.txt";
 
 	private static final String INFILE = "D:/Indri/path/to/collection2/hello.txt";
 
@@ -29,6 +29,7 @@ public class ContentCatcher {
 
 	public ContentCatcher(String[] searchList){
 		outFile.delete();
+		this.writeFile("20");
 		for(String str :searchList ){
 			vector.add(str);
 			//this.writeFile(str);
@@ -37,7 +38,7 @@ public class ContentCatcher {
 
 	}
 
-	public void writeFile(String str){
+	private void writeFile(String str){
 		try {
 			FileWriter fw = new FileWriter(outFile,true);
 			BufferedWriter bw = new BufferedWriter(fw);

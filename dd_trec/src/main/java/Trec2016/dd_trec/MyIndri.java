@@ -39,13 +39,13 @@ public class MyIndri{
 		return result;
 	}
 
-	public void search(String query){
+	public String search(String keywords,String subtopic){
 		QueryEnvironment env = new QueryEnvironment();
 		try {
 			env.addIndex(PATH);
 			QueryRequest req = new QueryRequest();
-			req.query = query;
-			req.resultsRequested = 5;
+			req.query = subtopic+" "+keywords;
+			req.resultsRequested = 1;
 			req.startNum = 0; //starting number in the result set, eg 10 to get results starting from the 11th position in the result list
 			req.options = req.TextSnippet; //alternative one is TextSnippet
 			QueryResults qrets = env.runQuery(req);
@@ -58,11 +58,11 @@ public class MyIndri{
 			ret.snippet //.replace("\n", "").replace("\r", "") // add this to remove the newline...
 			);
 			}
-
+			return rets[0].documentName;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} // open an Indri index
-
+		return "";
 	}
 }
