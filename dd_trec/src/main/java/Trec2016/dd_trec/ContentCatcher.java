@@ -19,11 +19,11 @@ public class ContentCatcher {
 
 	private static final String OUTFILE = "models/result.txt";
 
-	private static final String INFILE = "D:/Indri/path/to/collection2/hello.txt";
+	private static final String ROOTFILE = "D:/Indri/path/to/collection2/";
 
 	File outFile = new File(OUTFILE);
 
-	File inFile = new File(INFILE);
+	File rootFile = new File(ROOTFILE);
 
 	private Vector<String> vector = new Vector<String>();
 
@@ -58,39 +58,41 @@ public class ContentCatcher {
 
 
 
-	public void readTxtFile(){
-        try {
+	public void readTxtFile() {
+		try {
+			File[] fs = rootFile.listFiles();
+			for (int i = 0; i < fs.length; i++) {
+				File file = fs[i];
+				boolean m = false;
 
-                File file = new File(INFILE);
-                boolean m = false;
+				if (file.isFile() && file.exists()) { // 判断文件是否存在
+					InputStreamReader read = new InputStreamReader(new FileInputStream(file), ENCODING);// 考虑到编码格式
+					BufferedReader bufferedReader = new BufferedReader(read);
+					String lineTxt = null;
+					while ((lineTxt = bufferedReader.readLine()) != null) {
+						if (m == true) {
+							m = false;
+							this.writeFile(lineTxt);
+						}
 
-                if(file.isFile() && file.exists()){ //判断文件是否存在
-                    InputStreamReader read = new InputStreamReader(
-                    new FileInputStream(file),ENCODING);//考虑到编码格式
-                    BufferedReader bufferedReader = new BufferedReader(read);
-                    String lineTxt = null;
-                    while((lineTxt = bufferedReader.readLine()) != null){
-                    	if(m == true){
-                    		m = false;
-                    		this.writeFile(lineTxt);
-                    	}
+						if (vector.contains(lineTxt)) {
+							m = true;
+							lineTxt = bufferedReader.readLine();
+							lineTxt = bufferedReader.readLine();
 
-                        if(vector.contains(lineTxt)){
-                        	m = true;
-                        	lineTxt = bufferedReader.readLine();
-                        	lineTxt = bufferedReader.readLine();
+						}
+					}
+					read.close();
 
-                        }
-                    }
-                    read.close();
-        }else{
-            System.out.println("找不到指定的文件");
-        }
-        } catch (Exception e) {
-            System.out.println("读取文件内容出错");
-            e.printStackTrace();
-        }
+				} else {
+					System.out.println("找不到指定的文件");
+				}
+			}
+		} catch (Exception e) {
+			System.out.println("读取文件内容出错");
+			e.printStackTrace();
+		}
 
-    }
+	}
 
 }
