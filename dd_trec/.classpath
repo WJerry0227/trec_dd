@@ -12,17 +12,20 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/J2SE-1.5">
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/J2SE-1.5">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="/backup/dd_trec/indri-5.0/swig/obj/java"/>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry exported="true" kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="lib/indri.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/indri.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/args4j-2.0.6.jar"/>
+	<classpathentry kind="lib" path="/backup/dd_trec/dd_trec/lib/IndexUI.jar"/>
+	<classpathentry kind="lib" path="/backup/dd_trec/dd_trec/lib/RetUI.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

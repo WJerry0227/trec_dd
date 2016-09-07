@@ -9,12 +9,15 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
+import java.util.Vector;
 
 public class NewDocID {
 
-	private static final String OUTFILE = "result.txt";
+	private static final String OUTFILE = "LDARankingresult.txt";
 
 	private static final MyIndri mi = new MyIndri();
+	
+	private Vector<String> id = null;
 
 	private String subtopic = null;
 
@@ -25,7 +28,8 @@ public class NewDocID {
 		this.subtopic = subtopic;
 	}
 
-	public void getKeyWords(){
+	public void getKeyWords(int num){
+		this.id = new Vector<String>();
 		File f = new File("LDAResult.txt");
 		InputStreamReader read;
 		try {
@@ -34,7 +38,20 @@ public class NewDocID {
 			BufferedReader br = new BufferedReader(read);
 			String lineTxt = null;
 			while((lineTxt=br.readLine())!=null){
-				this.writeFile(mi.search(lineTxt, subtopic));
+				String[] newid = MyIndri.search(lineTxt, subtopic,num);
+				
+				int docnumber = 0;
+				for(int i=0;i<10;i++){
+					if(this.id.contains(newid[i].split(":")[0]))
+					   continue;
+					else{
+						this.writeFile(newid[i]);
+						id.add(newid[i].split(":")[0]);
+						docnumber++;
+						if(docnumber == 6)
+							break;
+					}
+				}
 			}
 			read.close();
 

@@ -88,7 +88,7 @@ public class TopicModelBuildAndApply {
 	private static void write(String str) {
 		try {
 			BufferedWriter writer = new BufferedWriter(new FileWriter(
-					OUTPUT));
+					OUTPUT,false));
 			writer.write(str);
 			writer.close();
 		} catch (IOException ex) {
