@@ -2,6 +2,7 @@ package query;
 
 import db.DBUtility;
 import org.ccil.cowan.tagsoup.jaxp.SAXParserImpl;
+
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
@@ -91,6 +92,7 @@ public class Doc2Mysql {
 
 
     private static SAXParserImpl saxParserImpl;
+
 
     static {
         try {

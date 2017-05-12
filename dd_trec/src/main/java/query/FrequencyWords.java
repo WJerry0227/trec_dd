@@ -57,8 +57,7 @@ public class FrequencyWords {
         parser.parse(in, handler);
     }
 
-    public static <K, V extends Comparable<? super V>> List<Map.Entry<K, V>>
-    sortByValue( Map<K, V> map )
+    public static <K, V extends Comparable<? super V>> List<Map.Entry<K, V>> sortByValue( Map<K, V> map )
     {
         List<Map.Entry<K, V>> list =
                 new LinkedList( map.entrySet() );

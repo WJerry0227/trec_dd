@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="args4j-2.0.6">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/JGibbLDA-v.1.0/lib/args4j-2.0.6.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

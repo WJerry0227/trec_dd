@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="lib">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/dd_trec/lib/indri.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dd_trec/lib/IndexUI.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dd_trec/lib/RetUI.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dd_trec/lib/args4j-2.0.6.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
