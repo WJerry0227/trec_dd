@@ -7,3 +7,5 @@ and delete the stopwords it has.
   Then we use Java to build the docs into Mysql.
   
   In the Java program we used some particular algorithm to continue the whole process and get the runfile.
+
+> http://trec.nist.gov/act_part/conference/trec2016.notebook.html contains our work paper
